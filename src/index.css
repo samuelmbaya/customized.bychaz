@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth, pretty baseline */
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply font-body text-ink bg-blush-50;
+}
+
+/* Boutique background sparkle (subtle) */
+.bokeh {
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(255, 90, 173, 0.16), transparent 60%),
+    radial-gradient(1000px 500px at 90% 30%, rgba(255, 130, 194, 0.12), transparent 55%),
+    radial-gradient(900px 450px at 50% 90%, rgba(255, 178, 216, 0.18), transparent 50%);
+}
+
+/* Fancy selection */
+::selection {
+  background: rgba(255, 90, 173, 0.25);
+}
+
+/* Little shimmer line */
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 90, 173, 0.35), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}

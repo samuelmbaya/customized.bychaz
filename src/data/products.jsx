@@ -1,0 +1,146 @@
+export const categories = [
+  { id: "all", label: "All" },
+  { id: "jewelry", label: "Jewelry" },
+  { id: "beauty", label: "Beauty" },
+  { id: "decor", label: "Decor" },
+  { id: "faith", label: "Faith" },
+  { id: "phone", label: "Phone" },
+];
+
+export const products = [
+  // Jewelry
+  {
+    id: "name-chain",
+    name: "Custom Name Chain",
+    price: 449,
+    category: "jewelry",
+    image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1200&q=80",
+    short: "Your name, your shine.",
+    customizable: ["nameText", "metalColor", "fontStyle"],
+  },
+  {
+    id: "name-bracelet-chain",
+    name: "Custom Name Bracelet (with Chain)",
+    price: 299,
+    category: "jewelry",
+    image: "https://images.unsplash.com/photo-1617038260988-1e1e7d7f5aa0?auto=format&fit=crop&w=1200&q=80",
+    short: "Soft, classy, personal.",
+    customizable: ["nameText", "metalColor", "fontStyle"],
+  },
+  {
+    id: "birth-year-chain",
+    name: "Custom Chain with Birth Year",
+    price: 349,
+    category: "jewelry",
+    image: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=1200&q=80",
+    short: "Wear your year.",
+    customizable: ["yearText", "metalColor"],
+  },
+
+  // Neon / Decor
+  {
+    id: "custom-neon-light",
+    name: "Custom Neon Light",
+    price: 899,
+    category: "decor",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
+    short: "Glow up your space.",
+    customizable: ["nameText", "neonColor"],
+  },
+  {
+    id: "pink-butterfly-wall",
+    name: "Pink Butterfly Wall Decoration",
+    price: 249,
+    category: "decor",
+    image: "https://images.unsplash.com/photo-1523475496153-3d6ccbb199dd?auto=format&fit=crop&w=1200&q=80",
+    short: "Butterfly soft-girl vibes.",
+    customizable: ["noteText"],
+  },
+  {
+    id: "sunset-projection-lamp",
+    name: "Sunset Projection Lamp",
+    price: 379,
+    category: "decor",
+    image: "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1200&q=80",
+    short: "Golden-hour at home.",
+    customizable: ["noteText"],
+  },
+  {
+    id: "heart-nail-cushion",
+    name: "Heart Shape & Nail Cushion",
+    price: 199,
+    category: "beauty",
+    image: "https://images.unsplash.com/photo-1612810436541-336f9f0b98df?auto=format&fit=crop&w=1200&q=80",
+    short: "Cute + comfy nail setup.",
+    customizable: ["noteText"],
+  },
+
+  // Beauty / Lash
+  {
+    id: "custom-lash-mirror",
+    name: "Custom Lash Mirror",
+    price: 259,
+    category: "beauty",
+    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80",
+    short: "Mirror that matches your name.",
+    customizable: ["nameText", "caseColor"],
+  },
+  {
+    id: "lash-brush",
+    name: "Lash Brush",
+    price: 49,
+    category: "beauty",
+    image: "https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=1200&q=80",
+    short: "Clean lashes, always.",
+    customizable: [],
+  },
+  {
+    id: "custom-nail-bow-design",
+    name: "Custom Nail Bow Design",
+    price: 199,
+    category: "beauty",
+    image: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=1200&q=80",
+    short: "Bows on nails? Say less.",
+    customizable: ["noteText"],
+  },
+
+  // Faith
+  {
+    id: "jesus-sticker",
+    name: "Jesus Sticker",
+    price: 39,
+    category: "faith",
+    image: "https://images.unsplash.com/photo-1520699049698-acd2fccb8cc8?auto=format&fit=crop&w=1200&q=80",
+    short: "Faith, but make it aesthetic.",
+    customizable: ["noteText"],
+  },
+  {
+    id: "prayer-decoration",
+    name: "Prayer Decoration",
+    price: 189,
+    category: "faith",
+    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
+    short: "A gentle reminder daily.",
+    customizable: ["verseText"],
+  },
+
+  // Phone
+  {
+    id: "phone-light",
+    name: "Phone Light",
+    price: 129,
+    category: "phone",
+    image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=1200&q=80",
+    short: "Content glow on demand.",
+    customizable: ["noteText"],
+  },
+  {
+    id: "phone-case-hearts-verses",
+    name: "Phone Case (Hearts + Bible Verse)",
+    price: 279,
+    category: "phone",
+    image: "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?auto=format&fit=crop&w=1200&q=80",
+    short: "Hearts + your favorite verse.",
+    customizable: ["phoneModel", "verseText", "caseColor"],
+  },
+];
