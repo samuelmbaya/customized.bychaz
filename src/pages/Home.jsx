@@ -3,12 +3,14 @@ import BowDivider from "../components/BowDivider.jsx";
 import BowIcon from "../components/BowIcon.jsx";
 import ProductCard from "../components/ProductCard.jsx";
 import { products } from "../data/products.jsx";
+import InstagramGallery from "../components/InstagramGallery.jsx";
 
 export default function Home() {
   const featured = products.slice(0, 6);
 
   return (
     <div className="max-w-6xl mx-auto px-4 pt-8">
+      {/* HERO */}
       <section className="bg-white/70 backdrop-blur border border-blush-100 shadow-soft rounded-3xl overflow-hidden">
         <div className="p-7 sm:p-10 grid sm:grid-cols-2 gap-8 items-center">
           <div>
@@ -24,8 +26,8 @@ export default function Home() {
             </h1>
 
             <p className="mt-4 text-ink/70">
-              Custom name chains, neon lights, lash mirrors, phone cases with
-              hearts & verses — all styled to match your vibe.
+              Custom name chains, neon lights, lash mirrors, and cute decor —
+              all styled to match your vibe.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -91,8 +93,8 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FEATURED */}
       <BowDivider label="Featured" />
-
       <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {featured.map((p) => (
           <ProductCard key={p.id} product={p} />
@@ -107,6 +109,10 @@ export default function Home() {
           View All Products
         </Link>
       </div>
+
+      {/* INSTAGRAM */}
+      <BowDivider label="From Instagram" />
+      <InstagramGallery />
     </div>
   );
 }

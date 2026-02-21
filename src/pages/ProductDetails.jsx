@@ -7,6 +7,10 @@ import BowIcon from "../components/BowIcon.jsx";
 import { useCart } from "../context/CartContext.jsx";
 import { moneyZAR } from "../utils/money.js";
 
+import CustomPreview from "../components/CustomPreview.jsx";
+import ColorPicker from "../components/ColorPicker.jsx";
+import FontPicker from "../components/FontPicker.jsx";
+
 function Field({ label, children }) {
   return (
     <label className="block">
@@ -40,7 +44,9 @@ export default function ProductDetails() {
     return (
       <div className="max-w-6xl mx-auto px-4 pt-10">
         <div className="bg-white/70 border border-blush-100 shadow-soft rounded-3xl p-8">
-          <div className="font-display text-2xl text-blush-900">Product not found</div>
+          <div className="font-display text-2xl text-blush-900">
+            Product not found
+          </div>
           <button
             className="mt-4 rounded-full bg-blush-600 text-white px-6 py-3 font-semibold shadow-glow"
             onClick={() => nav("/shop")}
@@ -59,17 +65,36 @@ export default function ProductDetails() {
   }, {});
 
   function validateCustomization() {
-    // Only enforce required fields for certain keys
     const mustHave = ["nameText", "yearText", "verseText", "phoneModel"];
-    const missing = requiredKeys.filter((k) => mustHave.includes(k) && !String(form[k] || "").trim());
-    return missing;
+    return requiredKeys.filter(
+      (k) => mustHave.includes(k) && !String(form[k] || "").trim()
+    );
   }
 
   const missing = validateCustomization();
 
+  // Preview type (for live preview card)
+  const previewType = product.id.includes("neon")
+    ? "neon"
+    : product.id.includes("sign") ||
+      product.id.includes("decoration") ||
+      product.id.includes("door") ||
+      product.id.includes("toy")
+    ? "sign"
+    : product.id.includes("mirror")
+    ? "mirror"
+    : "jewelry";
+
+  const previewText =
+    form.nameText || form.verseText || form.yearText || form.phoneModel || "";
+
+  const previewAccent =
+    form.caseColor || form.metalColor || form.neonColor || "Pink";
+
   return (
     <div className="max-w-6xl mx-auto px-4 pt-8">
       <div className="grid lg:grid-cols-2 gap-6">
+        {/* LEFT: Product */}
         <section className="bg-white/70 backdrop-blur border border-blush-100 shadow-soft rounded-3xl overflow-hidden">
           <img
             src={product.image}
@@ -99,14 +124,35 @@ export default function ProductDetails() {
                 ← Back to shop
               </Link>
             </div>
+
+            {/* Share product */}
+            <button
+              type="button"
+              onClick={() => {
+                const msg = `Check this out: ${product.name} 💗\n${window.location.href}`;
+                window.open(
+                  `https://wa.me/?text=${encodeURIComponent(msg)}`,
+                  "_blank"
+                );
+              }}
+              className="mt-4 w-full rounded-full bg-white/70 border border-blush-100 text-blush-800 px-6 py-3 font-semibold shadow-soft hover:bg-white transition"
+            >
+              Share on WhatsApp
+            </button>
           </div>
         </section>
 
+        {/* RIGHT: Customization */}
         <section className="bg-white/70 backdrop-blur border border-blush-100 shadow-soft rounded-3xl p-6 sm:p-8">
           <div className="font-display text-2xl text-blush-900">Customize</div>
           <p className="text-sm text-ink/65 mt-1">
             Fill what applies. Then add to cart.
           </p>
+
+          {/* Live preview */}
+          <div className="mt-5">
+            <CustomPreview type={previewType} text={previewText} accent={previewAccent} />
+          </div>
 
           <BowDivider label="Details" />
 
@@ -115,7 +161,9 @@ export default function ProductDetails() {
               <Field label="Name (required)">
                 <input
                   value={form.nameText}
-                  onChange={(e) => setForm((p) => ({ ...p, nameText: e.target.value }))}
+                  onChange={(e) =>
+                    setForm((p) => ({ ...p, nameText: e.target.value }))
+                  }
                   className="w-full rounded-2xl bg-white/70 border border-blush-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blush-300"
                   placeholder="e.g. Thando"
                 />
@@ -126,7 +174,9 @@ export default function ProductDetails() {
               <Field label="Birth year (required)">
                 <input
                   value={form.yearText}
-                  onChange={(e) => setForm((p) => ({ ...p, yearText: e.target.value }))}
+                  onChange={(e) =>
+                    setForm((p) => ({ ...p, yearText: e.target.value }))
+                  }
                   className="w-full rounded-2xl bg-white/70 border border-blush-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blush-300"
                   placeholder="e.g. 2002"
                   inputMode="numeric"
@@ -138,7 +188,9 @@ export default function ProductDetails() {
               <Field label="Bible verse (required)">
                 <input
                   value={form.verseText}
-                  onChange={(e) => setForm((p) => ({ ...p, verseText: e.target.value }))}
+                  onChange={(e) =>
+                    setForm((p) => ({ ...p, verseText: e.target.value }))
+                  }
                   className="w-full rounded-2xl bg-white/70 border border-blush-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blush-300"
                   placeholder="e.g. Psalm 23:1"
                 />
@@ -149,47 +201,40 @@ export default function ProductDetails() {
               <Field label="Phone model (required)">
                 <input
                   value={form.phoneModel}
-                  onChange={(e) => setForm((p) => ({ ...p, phoneModel: e.target.value }))}
+                  onChange={(e) =>
+                    setForm((p) => ({ ...p, phoneModel: e.target.value }))
+                  }
                   className="w-full rounded-2xl bg-white/70 border border-blush-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blush-300"
                   placeholder="e.g. iPhone 13 / Samsung A54"
                 />
               </Field>
             )}
 
+            {/* Metal color as circles */}
             {requiredKeys.includes("metalColor") && (
-              <Field label="Metal color">
-                <select
-                  value={form.metalColor}
-                  onChange={(e) => setForm((p) => ({ ...p, metalColor: e.target.value }))}
-                  className="w-full rounded-2xl bg-white/70 border border-blush-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blush-300"
-                >
-                  <option>Gold</option>
-                  <option>Silver</option>
-                  <option>Rose Gold</option>
-                </select>
-              </Field>
+              <ColorPicker
+                label="Metal color"
+                value={form.metalColor}
+                onChange={(v) => setForm((p) => ({ ...p, metalColor: v }))}
+              />
             )}
 
+            {/* Font picker visual */}
             {requiredKeys.includes("fontStyle") && (
-              <Field label="Font style">
-                <select
-                  value={form.fontStyle}
-                  onChange={(e) => setForm((p) => ({ ...p, fontStyle: e.target.value }))}
-                  className="w-full rounded-2xl bg-white/70 border border-blush-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blush-300"
-                >
-                  <option>Elegant</option>
-                  <option>Classic</option>
-                  <option>Bold</option>
-                  <option>Soft Script</option>
-                </select>
-              </Field>
+              <FontPicker
+                value={form.fontStyle}
+                onChange={(v) => setForm((p) => ({ ...p, fontStyle: v }))}
+              />
             )}
 
+            {/* Neon color (keep dropdown, because it’s many options) */}
             {requiredKeys.includes("neonColor") && (
               <Field label="Neon color">
                 <select
                   value={form.neonColor}
-                  onChange={(e) => setForm((p) => ({ ...p, neonColor: e.target.value }))}
+                  onChange={(e) =>
+                    setForm((p) => ({ ...p, neonColor: e.target.value }))
+                  }
                   className="w-full rounded-2xl bg-white/70 border border-blush-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blush-300"
                 >
                   <option>Hot Pink</option>
@@ -201,19 +246,13 @@ export default function ProductDetails() {
               </Field>
             )}
 
+            {/* Case color as circles */}
             {requiredKeys.includes("caseColor") && (
-              <Field label="Case color">
-                <select
-                  value={form.caseColor}
-                  onChange={(e) => setForm((p) => ({ ...p, caseColor: e.target.value }))}
-                  className="w-full rounded-2xl bg-white/70 border border-blush-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blush-300"
-                >
-                  <option>Pink</option>
-                  <option>White</option>
-                  <option>Clear</option>
-                  <option>Blush</option>
-                </select>
-              </Field>
+              <ColorPicker
+                label="Case color"
+                value={form.caseColor}
+                onChange={(v) => setForm((p) => ({ ...p, caseColor: v }))}
+              />
             )}
 
             {requiredKeys.includes("noteText") && (
@@ -221,7 +260,9 @@ export default function ProductDetails() {
                 <Field label="Notes (optional)">
                   <textarea
                     value={form.noteText}
-                    onChange={(e) => setForm((p) => ({ ...p, noteText: e.target.value }))}
+                    onChange={(e) =>
+                      setForm((p) => ({ ...p, noteText: e.target.value }))
+                    }
                     rows={3}
                     className="w-full rounded-2xl bg-white/70 border border-blush-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blush-300"
                     placeholder="Colors, size request, special instructions…"
@@ -229,6 +270,14 @@ export default function ProductDetails() {
                 </Field>
               </div>
             )}
+          </div>
+
+          {/* Turnaround */}
+          <div className="mt-5 bg-blush-50 border border-blush-100 rounded-3xl p-4 text-sm text-ink/70">
+            <div className="font-semibold text-blush-900">Turnaround</div>
+            <div className="mt-1">
+              Estimated: <b>3–5 working days</b> for most customs (confirm on WhatsApp).
+            </div>
           </div>
 
           <div className="mt-6 flex items-center justify-between gap-4 flex-wrap">

@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import BowIcon from "./BowIcon.jsx";
 import { useCart } from "../context/CartContext.jsx";
 import Toast from "./Toast.jsx";
+import ThemeToggle from "./ThemeToggle.jsx";
 
 function NavItem({ to, children }) {
   return (
@@ -28,7 +29,7 @@ export default function Navbar() {
     <>
       <header className="sticky top-0 z-40">
         <div className="bg-white/60 backdrop-blur border-b border-blush-100">
-          <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
             <Link to="/" className="flex items-center gap-2">
               <span className="w-9 h-9 rounded-full bg-blush-100 flex items-center justify-center shadow-soft border border-blush-200">
                 <BowIcon className="w-6 h-6 text-blush-700" />
@@ -49,15 +50,19 @@ export default function Navbar() {
               <NavItem to="/contact">Contact</NavItem>
             </nav>
 
-            <Link
-              to="/cart"
-              className="relative inline-flex items-center gap-2 rounded-full bg-blush-600 text-white px-4 py-2 shadow-glow hover:brightness-105 transition"
-            >
-              <span className="text-sm font-semibold">Cart</span>
-              <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-sm font-bold">
-                {totals.count}
-              </span>
-            </Link>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+
+              <Link
+                to="/cart"
+                className="relative inline-flex items-center gap-2 rounded-full bg-blush-600 text-white px-4 py-2 shadow-glow hover:brightness-105 transition"
+              >
+                <span className="text-sm font-semibold">Cart</span>
+                <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-sm font-bold">
+                  {totals.count}
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </header>

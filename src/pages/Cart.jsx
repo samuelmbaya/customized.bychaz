@@ -10,7 +10,7 @@ export default function Cart() {
   const subtotalLabel = moneyZAR(totals.subtotal);
 
   // ✅ Change this to her real WhatsApp number (South Africa example without +): 27XXXXXXXXX
-  const WHATSAPP_NUMBER = "27XXXXXXXXX";
+  const WHATSAPP_NUMBER = "27817118312";
 
   const message = buildOrderMessage({
     shopName: "Bow Boutique",

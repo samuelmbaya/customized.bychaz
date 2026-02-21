@@ -39,3 +39,34 @@ body {
   0% { background-position: 0% 0; }
   100% { background-position: 200% 0; }
 }
+
+/* Theme intensity */
+:root[data-theme="soft"] {
+  --glow: 0.22;
+  --bokeh: 0.16;
+}
+
+:root[data-theme="extra"] {
+  --glow: 0.34;
+  --bokeh: 0.24;
+}
+
+/* Use vars in your bokeh */
+.bokeh {
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(255, 90, 173, var(--bokeh)), transparent 60%),
+    radial-gradient(1000px 500px at 90% 30%, rgba(255, 130, 194, calc(var(--bokeh) - 0.04)), transparent 55%),
+    radial-gradient(900px 450px at 50% 90%, rgba(255, 178, 216, calc(var(--bokeh) + 0.02)), transparent 50%);
+}
+
+@keyframes neonFlicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 0.95; }
+  94% { opacity: 0.75; }
+  96% { opacity: 1; }
+  98% { opacity: 0.85; }
+}
+
+.neon-flicker {
+  animation: neonFlicker 3.6s infinite;
+}
