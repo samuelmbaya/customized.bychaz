@@ -36,7 +36,7 @@ export default function Navbar() {
               </span>
               <div className="leading-tight">
                 <div className="font-display text-lg text-blush-900">
-                  Bow Boutique
+                  customized.bychaz
                 </div>
                 <div className="text-xs text-ink/60 -mt-1">
                   custom • cute • faith

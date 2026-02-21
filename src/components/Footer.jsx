@@ -7,7 +7,7 @@ export default function Footer() {
         <BowDivider label="Made with love & a little sparkle" />
         <div className="bg-white/70 backdrop-blur border border-blush-100 shadow-soft rounded-3xl p-6 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
           <div>
-            <div className="font-display text-xl text-blush-900">Bow Boutique</div>
+            <div className="font-display text-xl text-blush-900">customized.bychaz</div>
             <p className="text-sm text-ink/70 mt-1">
               Custom pieces • Pretty details • Faith-friendly vibes
             </p>

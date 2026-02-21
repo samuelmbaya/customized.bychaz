@@ -2,7 +2,7 @@ import BowDivider from "../components/BowDivider.jsx";
 
 export default function Contact() {
 
-  const whatsappNumber = "27817118312";
+  const whatsappNumber = "27843146711";
 
   const whatsappLink = `https://wa.me/${whatsappNumber}`;
   const instagramLink = "https://www.instagram.com/customized.bychaz/";
@@ -98,7 +98,7 @@ export default function Contact() {
         <BowDivider label="Tip" />
 
         <div className="text-sm text-ink/70">
-          For a premium look: use matching pink product backgrounds and consistent lighting in photos.
+          Pretty Details. Pretty Girls. Pretty World.
         </div>
 
       </section>

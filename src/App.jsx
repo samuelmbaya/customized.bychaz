@@ -18,13 +18,15 @@ export default function App() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setReady(true), 650);
+    const t = setTimeout(() => setReady(true), 5600);
     return () => clearTimeout(t);
   }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SiteLoader done={ready} />
+      <SiteLoader done={ready}
+      verse="Trust in the Lord with all your heart… — Proverbs 3:5"
+       />
 
       <div className="bokeh">
         <Navbar />
@@ -46,7 +48,7 @@ export default function App() {
       </div>
 
       {/* Replace with her real WhatsApp number */}
-      <FloatingWhatsApp phoneE164="27817118312" />
+      <FloatingWhatsApp phoneE164="27843146711" />
     </div>
   );
 }

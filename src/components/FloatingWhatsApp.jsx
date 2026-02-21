@@ -1,4 +1,4 @@
-export default function FloatingWhatsApp({ phoneE164 = "27817118312" }) {
+export default function FloatingWhatsApp({ phoneE164 = "27843146711" }) {
   const link = `https://wa.me/${phoneE164}`;
 
   return (

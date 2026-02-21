@@ -10,7 +10,7 @@ export default function Cart() {
   const subtotalLabel = moneyZAR(totals.subtotal);
 
   // ✅ Change this to her real WhatsApp number (South Africa example without +): 27XXXXXXXXX
-  const WHATSAPP_NUMBER = "27817118312";
+  const WHATSAPP_NUMBER = "27843146711";
 
   const message = buildOrderMessage({
     shopName: "Bow Boutique",
@@ -132,7 +132,7 @@ export default function Cart() {
               </pre>
 
               <div className="text-[11px] text-ink/45 mt-3">
-                Replace <b>27XXXXXXXXX</b> in <b>Cart.jsx</b> with her real number.
+                Replace <b>27843146711</b> in <b>Cart.jsx</b> with her real number.
               </div>
             </aside>
           </div>
